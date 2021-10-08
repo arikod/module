@@ -7,13 +7,30 @@ use Illuminate\Support\ServiceProvider;
 
 class ModuleServiceProvider extends ServiceProvider
 {
+    // OverEngineering
     public function boot(ModuleList $moduleList)
     {
         foreach ($moduleList->getAll() as $provider) {
             $this->app->register($provider);
         }
 
-        // Register the command if we are using the application via the CLI
+        $this->registerCommands();
+        $this->registerPublishing();
+    }
+
+    public function register()
+    {
+        $modules = config('arikod.modules') ?? [];
+
+        $this->app->bind(ModuleRegistrarInterface::class, ModuleRegistrar::class);
+        $this->app->when(ModuleList::class)
+            ->needs('$config')
+            ->give($modules);
+    }
+
+    public function registerCommands()
+    {
+        // php artisan module:status
         if ($this->app->runningInConsole()) {
             $this->commands([
                 ModuleStatusCommand::class
@@ -21,11 +38,12 @@ class ModuleServiceProvider extends ServiceProvider
         }
     }
 
-    public function register()
+    public function registerPublishing()
     {
-        $this->app->bind(ModuleRegistrarInterface::class, ModuleRegistrar::class);
-        $this->app->when(ModuleList::class)
-            ->needs('$config')
-            ->giveConfig('arikod.modules');
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/arikod.php' => $this->app->configPath('arikod.php'),
+            ], 'arikod-config');
+        }
     }
 }
