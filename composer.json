@@ -6,7 +6,7 @@
     "authors": [
         {
             "name": "Bekir",
-            "email": "email@example.com"
+            "email": "bekirgulmus@gmail.com"
         }
     ],
     "autoload": {
@@ -26,6 +26,6 @@
     },
     "require": {
         "php": "^7.3|^8.0",
-        "laravel/framework": "^5.4"
+        "laravel/framework": "^8.0"
     }
 }
