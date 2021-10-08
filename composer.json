@@ -2,7 +2,7 @@
     "name": "arikod/module",
     "description": "description",
     "minimum-stability": "stable",
-    "license": "proprietary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Bekir",
@@ -17,7 +17,15 @@
             "src/NonModuleRegistration.php"
         ]
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Arikod\\Module\\ModuleServiceProvider"
+            ]
+        }
+    },
     "require": {
-        "laravel/framework": "^8.54"
+        "php": "^7.3|^8.0",
+        "laravel/framework": "^5.4"
     }
 }
