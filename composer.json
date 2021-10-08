@@ -1,0 +1,23 @@
+{
+    "name": "arikod/module",
+    "description": "description",
+    "minimum-stability": "stable",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Bekir",
+            "email": "email@example.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Arikod\\Module\\": "src/"
+        },
+        "files": [
+            "src/NonModuleRegistration.php"
+        ]
+    },
+    "require": {
+        "laravel/framework": "^8.54"
+    }
+}
