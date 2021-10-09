@@ -2,6 +2,8 @@
 
 namespace Arikod\Module;
 
+use Arikod\Module\Console\ModuleDisableCommand;
+use Arikod\Module\Console\ModuleEnableCommand;
 use Arikod\Module\Console\ModuleStatusCommand;
 use Illuminate\Support\ServiceProvider;
 
@@ -30,10 +32,11 @@ class ModuleServiceProvider extends ServiceProvider
 
     public function registerCommands()
     {
-        // php artisan module:status
         if ($this->app->runningInConsole()) {
             $this->commands([
-                ModuleStatusCommand::class
+                ModuleStatusCommand::class,
+                ModuleEnableCommand::class,
+                ModuleDisableCommand::class
             ]);
         }
     }
