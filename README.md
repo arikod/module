@@ -4,11 +4,6 @@
 ### Todo List
     ModuleFacade
 
-``` bash
-php artisan module:enable XXX_XXX
-php artisan module:disable XXX_XXX
-```
-
 ## Install
 To install through Composer, by run the following command:
 
@@ -106,6 +101,16 @@ php artisan module:status
 php artisan module:status Arikod_TestModule
 php artisan module:status Arikod_ModuleA Arikod_ModuleB
 ```
+
+``` bash
+php artisan module:enable --all
+php artisan module:enable Module_AA Module_BB
+
+php artisan module:disable --all
+php artisan module:disable Module_AA Module_BB
+```
+
+
 
 ## TestModule
 To install through Composer, by run the following command:
